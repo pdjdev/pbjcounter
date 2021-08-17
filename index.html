@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" sizes="192x192" href="icon.png">
+<title>PBJ카운터</title>
+<style>
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+body {
+  font-family: 'Spoqa Han Sans Neo', 'Noto Sans CJK', normal Arial, Helvetica, 'sans-serif';
+  background-color: rgb(61, 61, 61);
+  color: white;
+}
+
+body::before {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  transform: scale(1.02);
+  opacity: 0.4;
+  z-index: -1;
+  content: "";
+}
+
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+  /* transition: opacity .5s ease; */
+}
+
+sub {
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+}
+
+video {
+  max-width: 500px;
+}
+
+</style>
+</head>
+<body>
+<div class="bg-image"></div>
+<center>
+<br>
+<h1>수능날까지<br><p style="font-size: 20px; opacity: 0.4; font-weight: lighter;">2021.11.18</p></h1>
+<p id="time1" style="margin-top: -20px; margin-bottom: 10px; font-weight: bolder;"></p>
+<video controls autoplay width="100%" style="margin-top: 10px;">
+  <source src="notme.mp4"
+          type="video/mp4">
+  Sorry, your browser doesn't support embedded videos.
+</video>
+<p style="color: rgba(255, 255, 255, 0.5); margin-top: 30px; margin-bottom: -10px;">-</p>
+<h1>카투사 선발발표까지<br><p style="font-size: 20px; opacity: 0.4; font-weight: lighter;">2021.11.4</p></h1>
+<p id="time2" style="margin-top: -20px; font-weight: bolder;"></p>
+<p id="time3" style="font-size: 20px; display: block; margin-top: -50px;"></p>
+<br>
+<img src="pray.gif">
+</center>
+
+
+<script>
+var SnDate = new Date("Nov 18, 2021 08:10:00").getTime();
+var KADate = new Date("Nov 4, 2021 00:00:00").getTime();
+var KSDate = new Date("Sep 10, 2021 14:00:00").getTime();
+
+var x = setInterval(function() {
+
+  document.querySelectorAll("#time1, #time2, #time3").forEach(function(e) {
+      e.animate([
+      // keyframes
+      { transform: 'scale(1)', opacity: 1 },
+      { transform: 'scale(0.98)', opacity: 0.8 }
+    ], {
+      // timing options
+      duration: 1000,
+      easing: 'ease-out'
+    });
+  });
+
+  var now = new Date().getTime();
+    
+  var distance = SnDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  if (distance < 0) {
+    document.getElementById("time1").innerHTML = "EXPIRED";
+  } else {
+    document.getElementById("time1").innerHTML = days + "<sub>일</sub> " + hours + "<sub>시간</sub> "
+    + minutes + "<sub>분</sub> " + seconds + "<sub>초</sub>";
+  }
+
+
+  distance = KADate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("time2").innerHTML = "EXPIRED";
+  } else {
+    document.getElementById("time2").innerHTML = days + "<sub>일</sub> " + hours + "<sub>시간</sub> "
+    + minutes + "<sub>분</sub> " + seconds + "<sub>초</sub>";
+  }
+
+
+  distance = KSDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("time3").innerHTML = "*현재 지원 중이거나 지원이 끝남";
+  } else {
+    document.getElementById("time3").innerHTML = "*지원서 접수는 " + days + "일 " + hours + "시간 "
+    + minutes + "분 " + seconds + "초 남음";
+  }
+
+}, 1000);
+
+</script>
+</body>
+</html>
