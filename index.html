@@ -79,7 +79,7 @@ video {
 <script>
 var SnDate = new Date("Nov 18, 2021 08:10:00").getTime();
 var KADate = new Date("Nov 4, 2021 00:00:00").getTime();
-var KSDate = new Date("Sep 10, 2021 14:00:00").getTime();
+var KSDate = new Date("Sep 16, 2021 14:00:00").getTime();
 
 var x = setInterval(function() {
 
@@ -139,10 +139,9 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("time3").innerHTML = "*현재 지원 중이거나 지원이 끝남";
+    document.getElementById("time3").innerHTML = "*지원 종료됨";
   } else {
-    document.getElementById("time3").innerHTML = "*지원서 접수는 " + days + "일 " + hours + "시간 "
+    document.getElementById("time3").innerHTML = "*지원서 접수마감은 " + days + "일 " + hours + "시간 "
     + minutes + "분 " + seconds + "초 남음";
   }
 
