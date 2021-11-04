@@ -122,7 +122,6 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   if (distance < 0) {
-    clearInterval(x);
     document.getElementById("time2").innerHTML = "EXPIRED";
   } else {
     document.getElementById("time2").innerHTML = days + "<sub>일</sub> " + hours + "<sub>시간</sub> "
